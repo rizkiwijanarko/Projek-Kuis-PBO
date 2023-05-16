@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerPertanyaan.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/crudmvcdao/CRUDMVCDAO.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/Helper/Koneksi.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/Controller/ControllerPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/View/CRUDJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/DAO/DAOPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/DAOInterface/IDAOPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/Model/TabelModelPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/crudmvcdao/CRUDMVCDAO.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/Model/Pertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/CRUDMVCDAO/src/View/CRUDPertanyaan.java</file>
         </group>
     </open-files>
 </project-private>

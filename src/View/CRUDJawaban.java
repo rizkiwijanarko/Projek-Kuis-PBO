@@ -78,7 +78,7 @@ public class CRUDJawaban extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "ID Pertanyaan", "Teks Jawaban", "Is Correct"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -157,7 +157,11 @@ public class CRUDJawaban extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         jLabel5.setText("Jawaban Benar");
 
-        is_correct.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        is_correct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                is_correctActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -269,6 +273,10 @@ public class CRUDJawaban extends javax.swing.JFrame {
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void is_correctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_is_correctActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_is_correctActionPerformed
 
     /**
      * @param args the command line arguments

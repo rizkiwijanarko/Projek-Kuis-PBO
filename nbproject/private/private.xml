@@ -4,7 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerPertanyaan.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDPertanyaan.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerJawaban.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDJawaban.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/crudmvcdao/CRUDMVCDAO.java</file>
         </group>
     </open-files>

@@ -12,7 +12,7 @@ import Model.Jawaban;
 import Model.TabelModelJawaban;
 /**
  *
- * @author rizki
+ * @author lenovo
  */
 public class ControllerJawaban {
     

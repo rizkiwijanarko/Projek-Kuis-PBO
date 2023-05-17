@@ -12,6 +12,9 @@ import javax.swing.table.AbstractTableModel;
  * @author lenovo
  */
 public class TabelModelJawaban extends AbstractTableModel{
+
+    private final List<Jawaban> lstJawaban;
+    private int rowindex;
     
     //Constructor
     public TabelModelJawaban(List<Jawaban> lstJawabans){

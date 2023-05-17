@@ -32,7 +32,7 @@ public class CRUDJawaban extends javax.swing.JFrame {
         txtCariSoal = new javax.swing.JTextField();
         btnCari = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblJawaban = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -70,7 +70,7 @@ public class CRUDJawaban extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblJawaban.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -81,7 +81,7 @@ public class CRUDJawaban extends javax.swing.JFrame {
                 "ID", "ID Pertanyaan", "Teks Jawaban", "Is Correct"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblJawaban);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -329,9 +329,13 @@ public class CRUDJawaban extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_teksjawaban;
+    private javax.swing.JTable tblJawaban;
     private javax.swing.JTextArea teks_jawaban;
     private javax.swing.JTextField txtCariSoal;
     // End of variables declaration//GEN-END:variables
+
+    public Object getTabelData() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

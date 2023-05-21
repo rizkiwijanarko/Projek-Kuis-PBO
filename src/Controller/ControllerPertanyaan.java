@@ -12,6 +12,7 @@ import Model.Pertanyaan;
 import Model.TabelModelPertanyaan;
 import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
+import javax.swing.JTextField;
 /**
  *
  * @author rizki
@@ -44,15 +45,18 @@ public class ControllerPertanyaan {
     
     public void insert()
     {
-        if (!frmPertanyaan.getTxtPertanyaan().getText().trim().isEmpty()& !frmPertanyaan.getID().getText().trim().isEmpty()& !frmPertanyaan.getIDJawabanBenar().getText().trim().isEmpty()){
+        if (!frmPertanyaan.getTxtPertanyaan().getText().trim().isEmpty() && !frmPertanyaan.getID().getText().trim().isEmpty() && !frmPertanyaan.getIDJawabanBenar().getText().trim().isEmpty()){
              Pertanyaan b = new Pertanyaan();
              b.setId(Integer.parseInt(frmPertanyaan.getID().getText()));
              b.setTeksPertanyaan(frmPertanyaan.getTxtPertanyaan().getText());
              b.setIdJawabanBenar(Integer.parseInt(frmPertanyaan.getIDJawabanBenar().getText()));
+             boolean res = implPertanyaan.insert(b);
              
-             implPertanyaan.insert(b);
-             JOptionPane.showMessageDialog(null,"Berhasil menyimpan Data!");
-            }else{
+             if(res)
+                 JOptionPane.showMessageDialog(null,"Berhasil menyimpan Data!");
+             else
+                 JOptionPane.showMessageDialog(frmPertanyaan,"Gagal menyimpan Data, Dikarenakan Terdapat Data Duplikat!");
+        }else{
              JOptionPane.showMessageDialog(frmPertanyaan,"Data Tidak Boleh Kosong!");
         }
     }
@@ -78,10 +82,15 @@ public class ControllerPertanyaan {
     
     public void delete()
     {
-        Pertanyaan b = new Pertanyaan();
         implPertanyaan.delete(Integer.parseInt(frmPertanyaan.getID().getText()));
-
         JOptionPane.showMessageDialog(null,"Berhasil Menghapus Data!");
+    }
+    
+    public void cariSoal()
+    {
+        lstPertanyaan = implPertanyaan.getCariSoal(frmPertanyaan.getTxtCariSoal().getText());
+        TabelModelPertanyaan tblPertanyaan = new TabelModelPertanyaan(lstPertanyaan);
+        frmPertanyaan.getTabelData().setModel(tblPertanyaan);
     }
         
         

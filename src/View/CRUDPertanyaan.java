@@ -55,7 +55,7 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtCariSoal = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        cari = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelData = new javax.swing.JTable();
 
@@ -194,10 +194,10 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Cari");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cari.setText("Cari");
+        cari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cariActionPerformed(evt);
             }
         });
 
@@ -237,7 +237,7 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtCariSoal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(cari)
                 .addGap(21, 21, 21))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
@@ -251,7 +251,7 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtCariSoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(cari))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(73, Short.MAX_VALUE))
@@ -310,9 +310,11 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCariSoalActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ctPertanyaan.cariSoal();
+        ctPertanyaan.Reset();
+    }//GEN-LAST:event_cariActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
@@ -395,9 +397,9 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
     private javax.swing.JButton btnUbah;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JButton cari;
     private javax.swing.JTextField id;
     private javax.swing.JTextField id_jawaban_benar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -435,5 +437,8 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
         return id_jawaban_benar;
     }
     
-    
+        public JTextField getTxtCariSoal()
+    {
+        return txtCariSoal;
+    }
 }   

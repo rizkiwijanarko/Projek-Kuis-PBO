@@ -49,8 +49,9 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     }
     
     
-    public void insert(Pertanyaan b)
+    public boolean insert(Pertanyaan b)
     {
+        boolean hasil = true;
         PreparedStatement statement = null;
         try{
             statement =  (PreparedStatement) con.prepareStatement(insert);
@@ -61,13 +62,16 @@ public class DAOPertanyaan implements IDAOPertanyaan{
             
         }catch(SQLException e){
             System.out.println("GAGAL MENAMBAHKAN DATA!");
+            hasil = false;
         }finally{
             try{
                 statement.close();
             }catch(SQLException e){
-                System.out.println("Data Gagal Ditambahkan!");
+                System.out.println("GAGAL MENAMBAHKAN DATA!");
+                hasil = false;
             }
         }
+        return hasil;
     }
     
     public void update(Pertanyaan b)
@@ -114,30 +118,31 @@ public class DAOPertanyaan implements IDAOPertanyaan{
         }
         
     }
-//    
-//    
-//    public List<Pertanyaan> getCariSoal(String soal){
-//      List<Pertanyaan> lstPertanyaan = null;
-//        
-//        try {
-//            lstPertanyaan = new ArrayList<>();
-//            PreparedStatement st = (PreparedStatement) con.prepareStatement(cariSoal);
-//            st.setString(1, "%" + soal + "%");
-//            ResultSet rs = st.executeQuery();
-//            while(rs.next())
-//            {
-//                Pertanyaan b = new Pertanyaan();
-//                b.setId(rs.getInt("id"));
-//                b.setTeksPertanyaan(rs.getString("teks_pertanyaan"));
-//                b.setIdJawabanBenar(rs.getInt("id_jawaban_benar"));
-//                lstPertanyaan.add(b);
-//            }
-//            
-//        } catch (SQLException e) {
-//            System.out.println("Tidak ada entri data");
-//        }
-//        return lstPertanyaan;
-//    }
+    
+    
+    public List<Pertanyaan> getCariSoal(String soal)
+    {
+      List<Pertanyaan> lstPertanyaan = null;
+        
+        try {
+            lstPertanyaan = new ArrayList<>();
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(cariSoal);
+            st.setString(1, "%" + soal + "%");
+            ResultSet rs = st.executeQuery();
+            while(rs.next())
+            {
+                Pertanyaan b = new Pertanyaan();
+                b.setId(rs.getInt("id"));
+                b.setTeksPertanyaan(rs.getString("teks_pertanyaan"));
+                b.setIdJawabanBenar(rs.getInt("id_jawaban_benar"));
+                lstPertanyaan.add(b);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Tidak ada entri data");
+        }
+        return lstPertanyaan;
+    }
     
     
     Connection con;
@@ -146,6 +151,6 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     String insert = "INSERT INTO pertanyaan_quiz (id,teks_pertanyaan,id_jawaban_benar) VALUES (?,?,?);";
     String update = "UPDATE pertanyaan_quiz set teks_pertanyaan=?, id_jawaban_benar=? WHERE id=?;";
     String delete = "DELETE FROM pertanyaan_quiz WHERE id=?;";
-    String strRead = "SELECT * FROM pertanyaan_quiz;";
- //   String cariSoal = "SELECT * FROM pertanyaan_quiz WHERE teks_pertanyaan like ?;";
+    String strRead = "SELECT * FROM `pertanyaan_quiz` ORDER BY `id` asc;";
+    String cariSoal = "SELECT * FROM pertanyaan_quiz WHERE teks_pertanyaan like ?;";
 }

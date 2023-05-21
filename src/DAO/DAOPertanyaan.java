@@ -53,17 +53,14 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     {
         PreparedStatement statement = null;
         try{
-            statement = (PreparedStatement) con.prepareStatement(insert);
-            statement.setString(1, b.getTeksPertanyaan());
-            statement.setInt(2, b.getIdJawabanBenar());
+            statement =  (PreparedStatement) con.prepareStatement(insert);
+            statement.setInt(1, b.getId());
+            statement.setString(2, b.getTeksPertanyaan());
+            statement.setInt(3, b.getIdJawabanBenar());
             statement.executeUpdate();
-            ResultSet rs = statement.getGeneratedKeys();
-            while(rs.next()){
-                b.setId(rs.getInt(1));
-            }
             
         }catch(SQLException e){
-            System.out.println("Data Berhasil Ditambahkan!");
+            System.out.println("GAGAL MENAMBAHKAN DATA!");
         }finally{
             try{
                 statement.close();
@@ -75,25 +72,26 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     
     public void update(Pertanyaan b)
     {
+        
         PreparedStatement statement = null;
         try{
-            statement = (PreparedStatement) con.prepareStatement(update);
+            statement =  (PreparedStatement) con.prepareStatement(update);
+            
             statement.setString(1, b.getTeksPertanyaan());
             statement.setInt(2, b.getIdJawabanBenar());
             statement.setInt(3, b.getId());
             statement.executeUpdate();
             
         }catch(SQLException e){
-            System.out.println("Data Berhasil Diubah!");
+            System.out.println("GAGAL UPDATE DATA!");
         }finally{
             try{
                 statement.close();
             }catch(SQLException e){
-                System.out.println("Data Gagal Diubah!");
+                System.out.println("Data Gagal Ditambahkan!");
             }
         }
     }
-    
 
     public void delete(int id)
     {
@@ -106,7 +104,7 @@ public class DAOPertanyaan implements IDAOPertanyaan{
             statement.executeUpdate();
             
         } catch (SQLException e) {
-            System.out.println("Data Berhasil Dihapus!");
+            System.out.println("Data Gagal Dihapus!");
         } finally {
             try {
                 statement.close();
@@ -116,37 +114,38 @@ public class DAOPertanyaan implements IDAOPertanyaan{
         }
         
     }
-    
-    
-    public List<Pertanyaan> getCariSoal(String soal){
-      List<Pertanyaan> lstPertanyaan = null;
-        
-        try {
-            lstPertanyaan = new ArrayList<>();
-            PreparedStatement st = (PreparedStatement) con.prepareStatement(cariSoal);
-            st.setString(1, "%" + soal + "%");
-            ResultSet rs = st.executeQuery();
-            while(rs.next())
-            {
-                Pertanyaan b = new Pertanyaan();
-                b.setId(rs.getInt("id"));
-                b.setTeksPertanyaan(rs.getString("teks_pertanyaan"));
-                b.setIdJawabanBenar(rs.getInt("id_jawaban_benar"));
-                lstPertanyaan.add(b);
-            }
-            
-        } catch (SQLException e) {
-            System.out.println("Tidak ada entri data");
-        }
-        return lstPertanyaan;
-    }
+//    
+//    
+//    public List<Pertanyaan> getCariSoal(String soal){
+//      List<Pertanyaan> lstPertanyaan = null;
+//        
+//        try {
+//            lstPertanyaan = new ArrayList<>();
+//            PreparedStatement st = (PreparedStatement) con.prepareStatement(cariSoal);
+//            st.setString(1, "%" + soal + "%");
+//            ResultSet rs = st.executeQuery();
+//            while(rs.next())
+//            {
+//                Pertanyaan b = new Pertanyaan();
+//                b.setId(rs.getInt("id"));
+//                b.setTeksPertanyaan(rs.getString("teks_pertanyaan"));
+//                b.setIdJawabanBenar(rs.getInt("id_jawaban_benar"));
+//                lstPertanyaan.add(b);
+//            }
+//            
+//        } catch (SQLException e) {
+//            System.out.println("Tidak ada entri data");
+//        }
+//        return lstPertanyaan;
+//    }
     
     
     Connection con;
+    
     // SQL Query
-    String insert = "INSERT INTO pertanyaan_quiz (teks_pertanyaan,id_jawaban_benar) VALUES (?,?);";
+    String insert = "INSERT INTO pertanyaan_quiz (id,teks_pertanyaan,id_jawaban_benar) VALUES (?,?,?);";
     String update = "UPDATE pertanyaan_quiz set teks_pertanyaan=?, id_jawaban_benar=? WHERE id=?;";
     String delete = "DELETE FROM pertanyaan_quiz WHERE id=?;";
     String strRead = "SELECT * FROM pertanyaan_quiz;";
-    String cariSoal = "SELECT * FROM pertanyaan_quiz WHERE teks_pertanyaan like ?;";
+ //   String cariSoal = "SELECT * FROM pertanyaan_quiz WHERE teks_pertanyaan like ?;";
 }

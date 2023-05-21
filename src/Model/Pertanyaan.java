@@ -48,9 +48,11 @@ public class Pertanyaan {
     /**
      * @param IdJawabanBenar the IdJawabanBenar to set
      */
+    
     public void setIdJawabanBenar(int IdJawabanBenar) {
         this.IdJawabanBenar = IdJawabanBenar;
     }
+    
     private int ID;
     private String teksPertanyaan;
     private int IdJawabanBenar;

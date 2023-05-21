@@ -81,6 +81,11 @@ public class CRUDJawaban extends javax.swing.JFrame {
                 "ID", "ID Pertanyaan", "Teks Jawaban", "Is Correct"
             }
         ));
+        tblJawaban.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblJawabanMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblJawaban);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -277,6 +282,10 @@ public class CRUDJawaban extends javax.swing.JFrame {
     private void is_correctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_is_correctActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_is_correctActionPerformed
+
+    private void tblJawabanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJawabanMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblJawabanMouseClicked
 
     /**
      * @param args the command line arguments

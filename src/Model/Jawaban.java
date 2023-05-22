@@ -10,68 +10,76 @@ package Model;
  */
 public class Jawaban {
 
-    private Integer ID;
-    private Integer idPertanyaan;
-
     /**
-     * @return the ID
+     * @return the id
      */
     public Integer getId() {
-        return ID;
+        return id;
     }
 
     /**
-     * @param ID the id to set
+     * @param id the id to set
      */
-    public void setId(Integer ID) {
-        this.ID = ID;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /**
-     * @return the IdPertanyaan
+     * @return the id_pertanyaan
      */
-    public Integer getIdPertanyaan() {
-        return idPertanyaan;
+    public Integer getId_pertanyaan() {
+        return id_pertanyaan;
     }
 
     /**
-     * @param idPertanyaan
+     * @param id_pertanyaan the id_pertanyaan to set
      */
-    public void setIdPertanyaan(Integer idPertanyaan) {
-        this.idPertanyaan = idPertanyaan;
+    public void setId_pertanyaan(Integer id_pertanyaan) {
+        this.id_pertanyaan = id_pertanyaan;
     }
 
     /**
-     * @return the TeksJawaban
+     * @return the teks_jawaban
      */
-    public String getTeksJawaban() {
-        return TeksJawaban;
+    public String getTeks_jawaban() {
+        return teks_jawaban;
     }
 
     /**
-     * @param TeksJawaban
+     * @param teks_jawaban the teks_jawaban to set
      */
-    public void setTeksJawaban(String TeksJawaban) {
-        this.TeksJawaban = TeksJawaban;
+    public void setTeks_jawaban(String teks_jawaban) {
+        this.teks_jawaban = teks_jawaban;
     }
 
     /**
-     * @return the IsCorrect
+     * @return the is_correct
      */
+    public String getIs_correct() {
+        return is_correct;
+    }
+
+    /**
+     * @param is_correct the is_correct to set
+     */
+    public void setIs_correct(String is_correct) {
+        this.is_correct = is_correct;
+    }
+
+    private Integer id;
+    private Integer id_pertanyaan;
+    private String teks_jawaban;
+    private String is_correct;
+
+    Object getIdPertanyaan() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    Object getTeksJawaban() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getIsCorrect() {
-        return IsCorrect;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    /**
-     * @param IsCorrect the IsCorrect to set
-     */
-    public void setIsCorrect(String IsCorrect) {
-        this.IsCorrect = IsCorrect;
-    }
-
-   
-    private Integer Id;
-    private Integer IdPertanyaan;
-    private String TeksJawaban;
-    private String IsCorrect;
 }

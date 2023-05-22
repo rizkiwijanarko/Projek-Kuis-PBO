@@ -13,17 +13,14 @@ import javax.swing.table.AbstractTableModel;
  */
 public class TabelModelJawaban extends AbstractTableModel{
 
-    private final List<Jawaban> lstJawaban;
-    private int rowindex;
-    
-    //Constructor
-    public TabelModelJawaban(List<Jawaban> lstJawabans){
-        this.lstJawaban = lstJawabans;
+    public TabelModelJawaban(List<Jawaban> lstJwb)
+    {
+        this.lstJwb = lstJwb;
     }
-
+    
     @Override
-    public int getRowCount(){
-        return this.lstJawaban.size();
+    public int getRowCount() {
+       return this.lstJwb.size();
     }
 
     @Override
@@ -31,27 +28,43 @@ public class TabelModelJawaban extends AbstractTableModel{
         return 4;
     }
     
-    @Override
-    public String getColumnName(int column)
+    public String getColumName(int column)
     {
-        return switch (column) {
-            case 0 -> "ID";
-            case 1 -> "ID Pertanyaan";
-            case 2 -> "Teks Jawaban";
-            case 3 -> "Is Correct";
-            default -> null;
-        };
+        switch(column)
+        {
+            case 0:
+                return "ID";
+            case 1:
+                return "ID Pertanyaan";
+            case 2 :
+                return "Teks Jawaban";
+            case 3:
+                return "Is Correct";
+            default:
+                return null;
+        }
+        
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-       return switch (columnIndex) {
-            case 0 -> lstJawaban.get(rowIndex).getId();
-            case 1 -> lstJawaban.get(rowIndex).getIdPertanyaan();
-            case 2 -> lstJawaban.get(rowIndex).getTeksJawaban();
-            case 3 -> lstJawaban.get(rowindex).getIsCorrect();
-            default -> null;
-        };
+        
+        switch(columnIndex)
+        {
+            case 0:
+                return lstJwb.get(rowIndex).getId();
+            case 1:
+                return lstJwb.get(rowIndex).getIdPertanyaan();
+            case 2 :
+                return lstJwb.get(rowIndex).getTeksJawaban();
+            case 3:
+                return "Is Correct";
+            default:
+                return null;
+        }
+        
     }
     
+    List<Jawaban> lstJwb;
+
 }

@@ -6,33 +6,48 @@ package Controller;
 
 import DAO.DAOJawaban;
 import DAOInterface.IDAOJawaban;
-import View.CRUDJawaban;
-import java.util.List;
 import Model.Jawaban;
 import Model.TabelModelJawaban;
+import View.CRUDJawaban;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lenovo
  */
 public class ControllerJawaban {
     
-    public ControllerJawaban(CRUDJawaban frame)
-    {
-        this.frame = frame;
-        implJawaban = new DAOJawaban();
-        
+    public ControllerJawaban(CRUDJawaban crudJawaban){
+        this.crudJawaban = crudJawaban;
+        iJawaban = new DAOJawaban();
     }
     
-    public void isiTabel()
+    public void isiTable()
     {
-        lstJawaban = implJawaban.getAll();
-        TabelModelJawaban tmp = new TabelModelJawaban(lstJawaban);
-        frame.getTabelData().setModel(tmp);
+        lstJwb = iJawaban.getAll();
+        TabelModelJawaban tabelJwb = new TabelModelJawaban(lstJwb);
+        crudJawaban.getTabelData().setModel(tabelJwb);
     }
     
+    public void insert()
+    {
+        Jawaban b = new Jawaban();
+        b.setId_pertanyaan(Integer.parseInt(crudJawaban.gettxtIdPertanyaan().getText()));
+        b.setTeks_jawaban(crudJawaban.gettxtJawaban().getText());
+        b.setIs_correct(crudJawaban.getsetJawabanBenar().getSelectedItem().toString());
+        iJawaban.insert(b);
+        JOptionPane.showMessageDialog(null, "input berhasil");
+    }
     
+    public void reset()
+    {
+        crudJawaban.gettxtIdPertanyaan().setText("");
+        crudJawaban.gettxtJawaban().setText("");
+        crudJawaban.getsetJawabanBenar().setSelectedItem("");
+    }
     
-    CRUDJawaban frame;
-    IDAOJawaban implJawaban;
-    List<Jawaban> lstJawaban;
+    CRUDJawaban crudJawaban;
+    IDAOJawaban iJawaban;
+    List<Jawaban> lstJwb;
 }

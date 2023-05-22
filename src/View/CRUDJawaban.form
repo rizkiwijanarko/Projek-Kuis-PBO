@@ -83,7 +83,7 @@
                       <Group type="102" attributes="0">
                           <Component id="cari_jawaban" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="txtCariSoal" pref="359" max="32767" attributes="0"/>
+                          <Component id="txtCariJawaban" pref="359" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnCari" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -98,7 +98,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cari_jawaban" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtCariSoal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCariJawaban" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnCari" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -117,12 +117,12 @@
             <Property name="text" type="java.lang.String" value="Cari Jawaban"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtCariSoal">
+        <Component class="javax.swing.JTextField" name="txtCariJawaban">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ketikkan di sini"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCariSoalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCariJawabanActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCari">
@@ -140,7 +140,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tblJawaban">
+            <Component class="javax.swing.JTable" name="tabelJawaban">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="4">
@@ -179,7 +179,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblJawabanMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabelJawabanMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -201,36 +201,35 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbl_teksjawaban" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnUbah" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnHapus" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnReset" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Component id="lbl_teksjawaban" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="btnSimpan" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnUbah" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnHapus" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnReset" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="is_correct" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="id_pertanyaan" min="-2" pref="116" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="setJawabanBenar" min="-2" pref="116" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="txtIdPertanyaan" min="-2" pref="71" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace pref="130" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -238,19 +237,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbl_teksjawaban" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="lbl_teksjawaban" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="172" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="id_pertanyaan" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIdPertanyaan" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="is_correct" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="setJawabanBenar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -260,6 +256,13 @@
                       <Component id="btnReset" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="158" max="-2" attributes="0"/>
+                      <EmptySpace pref="310" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -273,21 +276,6 @@
             <Property name="text" type="java.lang.String" value="ID Pertanyaan"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTextArea" name="teks_jawaban">
-              <Properties>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="rows" type="int" value="5"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
         <Component class="javax.swing.JLabel" name="lbl_teksjawaban">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -295,14 +283,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Teks Jawaban : "/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="id_pertanyaan">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="id_pertanyaanActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnSimpan">
           <Properties>
@@ -342,18 +322,44 @@
             <Property name="text" type="java.lang.String" value="Jawaban Benar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="is_correct">
+        <Component class="javax.swing.JComboBox" name="setJawabanBenar">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Benar"/>
+                <StringItem index="1" value="Salah"/>
+              </StringArray>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="is_correctActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="setJawabanBenarActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="txtJawaban">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JTextField" name="txtIdPertanyaan">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdPertanyaanActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -4,6 +4,12 @@
  */
 package View;
 
+import Controller.ControllerJawaban;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author lenovo
@@ -15,6 +21,8 @@ public class CRUDJawaban extends javax.swing.JFrame {
      */
     public CRUDJawaban() {
         initComponents();
+        ctJwb = new ControllerJawaban(this);
+        ctJwb.isiTable();
     }
 
     /**
@@ -29,22 +37,22 @@ public class CRUDJawaban extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         cari_jawaban = new javax.swing.JLabel();
-        txtCariSoal = new javax.swing.JTextField();
+        txtCariJawaban = new javax.swing.JTextField();
         btnCari = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblJawaban = new javax.swing.JTable();
+        tabelJawaban = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        teks_jawaban = new javax.swing.JTextArea();
         lbl_teksjawaban = new javax.swing.JLabel();
-        id_pertanyaan = new javax.swing.JComboBox<>();
         btnSimpan = new javax.swing.JButton();
         btnHapus = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        is_correct = new javax.swing.JComboBox<>();
+        setJawabanBenar = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtJawaban = new javax.swing.JTextArea();
+        txtIdPertanyaan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,10 +64,10 @@ public class CRUDJawaban extends javax.swing.JFrame {
         cari_jawaban.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         cari_jawaban.setText("Cari Jawaban");
 
-        txtCariSoal.setText("Ketikkan di sini");
-        txtCariSoal.addActionListener(new java.awt.event.ActionListener() {
+        txtCariJawaban.setText("Ketikkan di sini");
+        txtCariJawaban.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCariSoalActionPerformed(evt);
+                txtCariJawabanActionPerformed(evt);
             }
         });
 
@@ -70,7 +78,7 @@ public class CRUDJawaban extends javax.swing.JFrame {
             }
         });
 
-        tblJawaban.setModel(new javax.swing.table.DefaultTableModel(
+        tabelJawaban.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -81,12 +89,12 @@ public class CRUDJawaban extends javax.swing.JFrame {
                 "ID", "ID Pertanyaan", "Teks Jawaban", "Is Correct"
             }
         ));
-        tblJawaban.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelJawaban.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblJawabanMouseClicked(evt);
+                tabelJawabanMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tblJawaban);
+        jScrollPane2.setViewportView(tabelJawaban);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -99,7 +107,7 @@ public class CRUDJawaban extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(cari_jawaban)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCariSoal, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                        .addComponent(txtCariJawaban, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCari)))
                 .addGap(21, 21, 21))
@@ -110,7 +118,7 @@ public class CRUDJawaban extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cari_jawaban)
-                    .addComponent(txtCariSoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCariJawaban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCari))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,18 +130,8 @@ public class CRUDJawaban extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         jLabel2.setText("ID Pertanyaan");
 
-        teks_jawaban.setColumns(20);
-        teks_jawaban.setRows(5);
-        jScrollPane1.setViewportView(teks_jawaban);
-
         lbl_teksjawaban.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         lbl_teksjawaban.setText("Teks Jawaban : ");
-
-        id_pertanyaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_pertanyaanActionPerformed(evt);
-            }
-        });
 
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -162,9 +160,21 @@ public class CRUDJawaban extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         jLabel5.setText("Jawaban Benar");
 
-        is_correct.addActionListener(new java.awt.event.ActionListener() {
+        setJawabanBenar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Benar", "Salah" }));
+        setJawabanBenar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setJawabanBenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                is_correctActionPerformed(evt);
+                setJawabanBenarActionPerformed(evt);
+            }
+        });
+
+        txtJawaban.setColumns(20);
+        txtJawaban.setRows(5);
+        jScrollPane3.setViewportView(txtJawaban);
+
+        txtIdPertanyaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdPertanyaanActionPerformed(evt);
             }
         });
 
@@ -175,45 +185,43 @@ public class CRUDJawaban extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(lbl_teksjawaban)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(btnSimpan)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnUbah)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnHapus)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnReset)))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(is_correct, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(id_pertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(lbl_teksjawaban)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnSimpan)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnUbah)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnHapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnReset))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(setJawabanBenar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtIdPertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(123, 123, 123)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGap(3, 3, 3)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_teksjawaban)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_teksjawaban)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(id_pertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdPertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(is_correct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(setJawabanBenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(102, 102, 102)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,6 +229,11 @@ public class CRUDJawaban extends javax.swing.JFrame {
                     .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(27, 27, 27)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(310, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,21 +267,19 @@ public class CRUDJawaban extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCariSoalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariSoalActionPerformed
+    private void txtCariJawabanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariJawabanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCariSoalActionPerformed
+    }//GEN-LAST:event_txtCariJawabanActionPerformed
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCariActionPerformed
 
-    private void id_pertanyaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_pertanyaanActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_id_pertanyaanActionPerformed
-
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
+        ctJwb.insert();
+        ctJwb.isiTable();
+        ctJwb.reset();
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
@@ -279,13 +290,17 @@ public class CRUDJawaban extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUbahActionPerformed
 
-    private void is_correctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_is_correctActionPerformed
+    private void setJawabanBenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setJawabanBenarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_is_correctActionPerformed
+    }//GEN-LAST:event_setJawabanBenarActionPerformed
 
-    private void tblJawabanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblJawabanMouseClicked
+    private void tabelJawabanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelJawabanMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblJawabanMouseClicked
+    }//GEN-LAST:event_tabelJawabanMouseClicked
+
+    private void txtIdPertanyaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPertanyaanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdPertanyaanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,22 +344,36 @@ public class CRUDJawaban extends javax.swing.JFrame {
     private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnUbah;
     private javax.swing.JLabel cari_jawaban;
-    private javax.swing.JComboBox<String> id_pertanyaan;
-    private javax.swing.JComboBox<String> is_correct;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lbl_teksjawaban;
-    private javax.swing.JTable tblJawaban;
-    private javax.swing.JTextArea teks_jawaban;
-    private javax.swing.JTextField txtCariSoal;
+    private javax.swing.JComboBox<String> setJawabanBenar;
+    private javax.swing.JTable tabelJawaban;
+    private javax.swing.JTextField txtCariJawaban;
+    private javax.swing.JTextField txtIdPertanyaan;
+    private javax.swing.JTextArea txtJawaban;
     // End of variables declaration//GEN-END:variables
-
-    public Object getTabelData() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    ControllerJawaban ctJwb;
+    
+    
+    public JTable getTabelData() { 
+        return tabelJawaban;
+    }
+    
+    public JTextArea gettxtJawaban(){
+        return txtJawaban;
+    }
+    
+    public JTextField gettxtIdPertanyaan(){
+        return txtIdPertanyaan;
+    }
+    
+    public JComboBox getsetJawabanBenar(){
+        return setJawabanBenar;
     }
 }

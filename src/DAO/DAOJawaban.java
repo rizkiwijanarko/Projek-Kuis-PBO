@@ -4,149 +4,83 @@
  */
 package DAO;
 
-import DAOInterface.IDAOPertanyaan;
+import DAOInterface.IDAOJawaban;
 import Helper.Koneksi;
 import Model.Jawaban;
-import Model.Pertanyaan;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import java.sql.Statement;
-import java.util.List;
-import java.sql.ResultSet;
+import com.mysql.jdbc.Statement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-/**;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
- * @author SAFANA SALSABILA
+ * @author lenovo
  */
-public class DAOJawaban implement DAOJawaban{
-    
+public class DAOJawaban implements IDAOJawaban{
+
     public DAOJawaban()
     {
         con = (Connection) Koneksi.getConnection();
     }
     
-    public List<Jawaban>getAll(){
-        List<Jawaban> lstJawaban = null;
-        
-        try {
-            lstJawaban = new ArrayList<Jawaban>();
-            Statement st = con.createStatement();
+    @Override
+    public List<Jawaban> getAll() {
+        List<Jawaban> lstJwb = null;
+        try
+        {
+            lstJwb = new ArrayList<Jawaban>();
+            Statement st = (Statement) con.createStatement();
             ResultSet rs = st.executeQuery(strRead);
             while(rs.next())
             {
                 Jawaban jwb = new Jawaban();
                 jwb.setId(rs.getInt("id"));
+                jwb.setIdPertanyaan(rs.getInt("id_pertanyaan"));
                 jwb.setTeksJawaban(rs.getString("teks_jawaban"));
-                lstJawaban.add(jwb);
+                jwb.setIsCorrect(rs.getString("is_correct"));
             }
-            
-        }catch (SQLException e) {
+        }
+        catch(SQLException e)
+        {
             System.out.println("Tidak ada entri data");
         }
-        return lstJawaban;
+        return lstJwb;
     }
     
-    public void insert(Jawaban b)
-    {
+
+    @Override
+    public void insert(Jawaban b) {
         PreparedStatement statement = null;
-        try{
-            statement = (PreparedStatement) con.prepareStatement(insert);
-            statement.setString(1, b.getTeksJawaban());
-            statement.setString(2, b.getIdPertanyaan());
-            statement.setInt(2, b.getIsCorrect());
-            statement.executeUpdate();
-            ResultSet rs = statement.getGeneratedKeys();
-            while(rs.next()){
-                b.setId(rs.getInt(1));
-            }
+        try
+        {
+            statement = (PreparedStatement) con.prepareStatement(strInsert);
+            statement.setInt(1, b.getId());
+            statement.setInt(2, b.getId_pertanyaan());
+            statement.setString(3, b.getTeks_jawaban());
+            statement.setString(4, b.getIsCorrect());
+            statement.execute();
             
-        }catch(SQLException e){
-            System.out.println("Data Berhasil Ditambahkan!");
-        }finally{
-            try{
-                statement.close();
-            }catch(SQLException e){
-                System.out.println("Data Gagal Ditambahkan!");
-            }
+        } catch(SQLException e)
+        {
+           System.out.println("gagal input");
+        }
+        finally
+        {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    System.out.println("gagal input");
+                }
         }
     }
     
-    public void update(Jawaban b)
-    {
-        PreparedStatement statement = null;
-        try{
-            statement = (PreparedStatement) con.prepareStatement(update);
-            statement.setString(1, b.getTeksJawaban());
-            statement.setString(2, b.getIdPertanyaan());
-            statement.setInt(3, b.getIsCorrect());
-            statement.setInt(4, b.getId());
-            statement.executeUpdate();
-            
-        }catch(SQLException e){
-            System.out.println("Data Berhasil Diubah!");
-        }finally{
-            try{
-                statement.close();
-            }catch(SQLException e){
-                System.out.println("Data Gagal Diubah!");
-            }
-        }
-    }
-    
-    public void delete(int id)
-    {
-        PreparedStatement statement = null;
-        
-        try {
-            statement = (PreparedStatement) con.prepareStatement(delete);
-            
-            statement.setInt(1, id);
-            statement.executeUpdate();
-            
-        } catch (SQLException e) {
-            System.out.println("Data Berhasil Dihapus!");
-        } finally {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                System.out.println("Data Gagal Dihapus!");
-            }
-        }
-        
-    }
-    
-    
-    public List<Jawaban> getCariJawaban(String Jawaban){
-      List<Jawaban> lstJawaban = null;
-        
-        try {
-            lstJawaban = new ArrayList<>();
-            PreparedStatement st = (PreparedStatement) con.prepareStatement(cariJawaban);
-            st.setString(1, "%" + IsCorrect + "%");
-            ResultSet rs = st.executeQuery();
-            while(rs.next())
-            {
-                Jawaban b = new Jawaban();
-                b.setId(rs.getInt("id"));
-                b.setTeksJawaban(rs.getString("teks_Jawaban"));
-                b.setIdPertanyaan(rs.getInt("id_pertanyaan"));
-                b.setIsCorrect(rs.getInt("jawaban_benar"));
-                lstJawaban.add(b);
-            }
-        } catch (SQLException e) {
-            System.out.println("Tidak ada entri data");
-        }
-        return lstJawaban;
-    }
-    
-    Connection con;
+     Connection con;
     // SQL Query
-    String insert = "INSERT INTO jawaban_quiz (teks_jawaban,id_pertanyaan,jawaban_benar) VALUES (?,?);";
-    String update = "UPDATE jawaban_quiz set teks_jawaban=?, id_pertanyaan=?, jawaban_benar=? WHERE id=?;";
-    String delete = "DELETE FROM jawaban_quiz WHERE id=?;";
-    String strRead = "SELECT * FROM jawaban_quiz;";
-    String cariJawaban = "SELECT * FROM jawaban_quiz WHERE teks_jawaban like ?;";
+    String strRead = "select * from jawaban_quiz;";
+    String strInsert = "insert into tblJawaban (id, id_pertanyaan, teks_jawaban, is_correct) values (?,?,?,?);";
+    
 }

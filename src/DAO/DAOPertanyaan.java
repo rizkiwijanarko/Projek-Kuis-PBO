@@ -26,6 +26,7 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     }
     
    
+    @Override
     public List<Pertanyaan> getAll() {
         List<Pertanyaan> lstPertanyaan = null;
         
@@ -41,7 +42,7 @@ public class DAOPertanyaan implements IDAOPertanyaan{
                 ptn.setIdJawabanBenar(rs.getInt("id_jawaban_benar"));
                 lstPertanyaan.add(ptn);
             }
-            
+        
         } catch (SQLException e) {
             System.out.println("Tidak ada entri data");
         }
@@ -49,6 +50,7 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     }
     
     
+    @Override
     public boolean insert(Pertanyaan b)
     {
         boolean hasil = true;
@@ -74,6 +76,7 @@ public class DAOPertanyaan implements IDAOPertanyaan{
         return hasil;
     }
     
+    @Override
     public void update(Pertanyaan b)
     {
         
@@ -97,6 +100,7 @@ public class DAOPertanyaan implements IDAOPertanyaan{
         }
     }
 
+    @Override
     public void delete(int id)
     {
         PreparedStatement statement = null;
@@ -120,6 +124,7 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     }
     
     
+    @Override
     public List<Pertanyaan> getCariSoal(String soal)
     {
       List<Pertanyaan> lstPertanyaan = null;

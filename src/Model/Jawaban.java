@@ -70,4 +70,5 @@ public class Jawaban {
     private Integer id_pertanyaan;
     private String teks_jawaban;
     private String is_correct;
+
 }

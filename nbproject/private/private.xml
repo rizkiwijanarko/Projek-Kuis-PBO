@@ -7,19 +7,14 @@
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOJawaban.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDPertanyaan.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerJawaban.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDJawaban.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/Jawaban.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/TabelModelJawaban.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOJawaban.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOJawaban.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDPertanyaan.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerJawaban.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDJawaban.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/Jawaban.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/TabelModelJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Helper/Koneksi.java</file>
         </group>
     </open-files>
 </project-private>

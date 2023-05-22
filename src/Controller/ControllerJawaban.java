@@ -11,6 +11,8 @@ import Model.TabelModelJawaban;
 import View.CRUDJawaban;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -44,10 +46,38 @@ public class ControllerJawaban {
     
     public void reset()
     {
-        crudJawaban.gettxtId();
+        if(crudJawaban.gettxtId().isEnabled())
+        crudJawaban.gettxtId().setEnabled(true);
+        crudJawaban.gettxtId().setText("");
         crudJawaban.gettxtIdPertanyaan().setText("");
         crudJawaban.gettxtJawaban().setText("");
         crudJawaban.getsetJawabanBenar().setSelectedItem("");
+    }
+    
+    public void isiField(int row)
+    {
+        crudJawaban.gettxtId().setEnabled(false);
+        crudJawaban.gettxtId().setText(lstJwb.get(row).getId().toString());
+        crudJawaban.gettxtIdPertanyaan().setText(Integer.toString(lstJwb.get(row).getId_pertanyaan()));
+        crudJawaban.gettxtJawaban().setText(lstJwb.get(row).getTeks_jawaban());
+        crudJawaban.getsetJawabanBenar().setSelectedItem(lstJwb);
+    }
+    
+    public void update()
+    {        
+        Jawaban b = new Jawaban();
+        b.setId(Integer.parseInt(crudJawaban.gettxtId().getText()));
+        b.setTeks_jawaban(crudJawaban.gettxtJawaban().getText());
+        b.setIs_correct(crudJawaban.getsetJawabanBenar().getSelectedItem().toString());
+        b.setId_pertanyaan(Integer.parseInt(crudJawaban.gettxtIdPertanyaan().getText()));
+        iJawaban.update(b);
+        JOptionPane.showMessageDialog(null, "update berhasil");
+    }
+    
+    public void delete()
+    {
+        iJawaban.delete(Integer.parseInt(crudJawaban.gettxtId().getText()));
+        JOptionPane.showMessageDialog(null,"Berhasil Menghapus Data!");
     }
     
     CRUDJawaban crudJawaban;

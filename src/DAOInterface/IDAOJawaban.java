@@ -16,4 +16,9 @@ public interface IDAOJawaban {
     public List<Jawaban> getAll();
     //insert data
     public void insert(Jawaban b);
+    //update data
+    public void update(Jawaban b);
+    //delete data
+    public void delete(int id);
+    
 }

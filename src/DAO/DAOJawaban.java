@@ -80,9 +80,61 @@ public class DAOJawaban implements IDAOJawaban{
         }
     }
     
-     Connection con;
+    @Override
+    public void update(Jawaban b) {
+        PreparedStatement statement = null;
+        try
+        {
+            statement = con.prepareStatement(strUpdate);
+            statement.setInt(1, b.getId_pertanyaan());
+            statement.setString(2, b.getTeks_jawaban());
+            statement.setString(3, b.getIs_correct());
+            statement.setInt(4, b.getId());
+            statement.execute();
+            
+        } catch(SQLException e)
+        {
+           System.out.println("gagal update");
+        }
+        finally
+        {
+                try {
+                    statement.close();
+                } catch (SQLException ex) {
+                    System.out.println("gagal update");
+                }
+        }
+        
+    }
+    
+    @Override
+    public void delete(int id) {
+        PreparedStatement statement = null;
+        try
+        {
+            statement = con.prepareStatement(strUpdate);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+
+        } catch(SQLException e)
+        {
+           System.out.println("gagal delete");
+        }
+        finally
+        {
+            try {
+            statement.close();
+            } catch (SQLException ex) {
+            System.out.println("gagal delete");
+            }
+        }
+    }
+    
+    Connection con;
     // SQL Query
     String strRead = "select * from jawaban_quiz;";
     String strInsert = "insert into jawaban_quiz (id, id_pertanyaan, teks_jawaban, is_correct) values (?,?,?,?);";
-    
+    String strUpdate = "update jawaban_quiz set id_pertanyaan=?, teks_jawaban=?, is_correct=? where id=?";
+    String strDelete = "delete from jawaban_quiz where id=?";
+
 }

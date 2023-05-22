@@ -158,6 +158,11 @@ public class CRUDJawaban extends javax.swing.JFrame {
 
         btnReset.setText("Reset");
         btnReset.setToolTipText("");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         jLabel5.setText("Jawaban Benar");
@@ -305,6 +310,9 @@ public class CRUDJawaban extends javax.swing.JFrame {
 
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         // TODO add your handling code here:
+        ctJwb.update();
+        ctJwb.isiTable();
+        ctJwb.reset();
     }//GEN-LAST:event_btnUbahActionPerformed
 
     private void setJawabanBenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_setJawabanBenarActionPerformed
@@ -313,15 +321,23 @@ public class CRUDJawaban extends javax.swing.JFrame {
 
     private void tabelJawabanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelJawabanMouseClicked
         // TODO add your handling code here:
+        int row = tabelJawaban.getSelectedRow();
+        ctJwb.isiField(row);
     }//GEN-LAST:event_tabelJawabanMouseClicked
 
     private void txtIdPertanyaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPertanyaanActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtIdPertanyaanActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        ctJwb.reset();
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments

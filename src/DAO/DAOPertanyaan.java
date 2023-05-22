@@ -7,8 +7,8 @@ package DAO;
 import DAOInterface.IDAOPertanyaan;
 import Helper.Koneksi;
 import Model.Pertanyaan;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 import java.sql.ResultSet;
@@ -22,7 +22,7 @@ public class DAOPertanyaan implements IDAOPertanyaan{
 
     public DAOPertanyaan()
     {
-        con = (Connection) Koneksi.getConnection();
+        con = Koneksi.getConnection();
     }
     
    

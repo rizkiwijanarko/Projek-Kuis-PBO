@@ -34,6 +34,7 @@ public class ControllerJawaban {
     public void insert()
     {
         Jawaban b = new Jawaban();
+        b.setId(Integer.parseInt(crudJawaban.gettxtId().getText()));
         b.setId_pertanyaan(Integer.parseInt(crudJawaban.gettxtIdPertanyaan().getText()));
         b.setTeks_jawaban(crudJawaban.gettxtJawaban().getText());
         b.setIs_correct(crudJawaban.getsetJawabanBenar().getSelectedItem().toString());
@@ -43,6 +44,7 @@ public class ControllerJawaban {
     
     public void reset()
     {
+        crudJawaban.gettxtId();
         crudJawaban.gettxtIdPertanyaan().setText("");
         crudJawaban.gettxtJawaban().setText("");
         crudJawaban.getsetJawabanBenar().setSelectedItem("");

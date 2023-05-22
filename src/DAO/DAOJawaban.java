@@ -25,7 +25,7 @@ public class DAOJawaban implements IDAOJawaban{
 
     public DAOJawaban()
     {
-        con = (Connection) Koneksi.getConnection();
+        con = Koneksi.getConnection();
     }
     
     @Override
@@ -63,7 +63,7 @@ public class DAOJawaban implements IDAOJawaban{
             statement.setInt(1, b.getId());
             statement.setInt(2, b.getId_pertanyaan());
             statement.setString(3, b.getTeks_jawaban());
-            statement.setString(4, b.getIsCorrect());
+            statement.setString(4, b.getIs_correct());
             statement.execute();
             
         } catch(SQLException e)

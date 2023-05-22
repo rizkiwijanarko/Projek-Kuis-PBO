@@ -54,9 +54,9 @@ public class TabelModelJawaban extends AbstractTableModel{
             case 0:
                 return lstJwb.get(rowIndex).getId();
             case 1:
-                return lstJwb.get(rowIndex).getIdPertanyaan();
+                return lstJwb.get(rowIndex).getId_pertanyaan();
             case 2 :
-                return lstJwb.get(rowIndex).getTeksJawaban();
+                return lstJwb.get(rowIndex).getTeks_jawaban();
             case 3:
                 return lstJwb.get(rowIndex).getIs_correct();
             default:

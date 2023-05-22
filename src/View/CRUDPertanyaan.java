@@ -333,6 +333,7 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctPertanyaan.delete();
         ctPertanyaan.isiTabel();
+        ctPertanyaan.Reset();
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
@@ -441,4 +442,4 @@ public class CRUDPertanyaan extends javax.swing.JFrame {
     {
         return txtCariSoal;
     }
-}   
+}

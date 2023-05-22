@@ -11,8 +11,6 @@ import java.util.List;
 import Model.Pertanyaan;
 import Model.TabelModelPertanyaan;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
-import javax.swing.JTextField;
 /**
  *
  * @author rizki
@@ -82,8 +80,12 @@ public class ControllerPertanyaan {
     
     public void delete()
     {
-        implPertanyaan.delete(Integer.parseInt(frmPertanyaan.getID().getText()));
-        JOptionPane.showMessageDialog(null,"Berhasil Menghapus Data!");
+        if (!frmPertanyaan.getTxtPertanyaan().getText().trim().isEmpty() && !frmPertanyaan.getID().getText().trim().isEmpty() && !frmPertanyaan.getIDJawabanBenar().getText().trim().isEmpty()){
+             implPertanyaan.delete(Integer.parseInt(frmPertanyaan.getID().getText()));
+            JOptionPane.showMessageDialog(null,"Berhasil Menghapus Data!");
+        }else{
+             JOptionPane.showMessageDialog(frmPertanyaan,"Tidak Ada Data yang Dipilih!");
+        }
     }
     
     public void cariSoal()

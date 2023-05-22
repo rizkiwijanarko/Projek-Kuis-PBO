@@ -58,7 +58,7 @@ public class TabelModelJawaban extends AbstractTableModel{
             case 2 :
                 return lstJwb.get(rowIndex).getTeksJawaban();
             case 3:
-                return "Is Correct";
+                return lstJwb.get(rowIndex).getIs_correct();
             default:
                 return null;
         }

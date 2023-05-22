@@ -7,14 +7,15 @@ package DAO;
 import DAOInterface.IDAOJawaban;
 import Helper.Koneksi;
 import Model.Jawaban;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.Statement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.ResultSet;
 
 /**
  *
@@ -33,15 +34,16 @@ public class DAOJawaban implements IDAOJawaban{
         try
         {
             lstJwb = new ArrayList<Jawaban>();
-            Statement st = (Statement) con.createStatement();
+            Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(strRead);
             while(rs.next())
             {
                 Jawaban jwb = new Jawaban();
                 jwb.setId(rs.getInt("id"));
-                jwb.setIdPertanyaan(rs.getInt("id_pertanyaan"));
-                jwb.setTeksJawaban(rs.getString("teks_jawaban"));
-                jwb.setIsCorrect(rs.getString("is_correct"));
+                jwb.setId_pertanyaan(rs.getInt("id_pertanyaan"));
+                jwb.setTeks_jawaban(rs.getString("teks_jawaban"));
+                jwb.setIs_correct(rs.getString("is_correct"));
+                lstJwb.add(jwb);
             }
         }
         catch(SQLException e)
@@ -57,7 +59,7 @@ public class DAOJawaban implements IDAOJawaban{
         PreparedStatement statement = null;
         try
         {
-            statement = (PreparedStatement) con.prepareStatement(strInsert);
+            statement = con.prepareStatement(strInsert);
             statement.setInt(1, b.getId());
             statement.setInt(2, b.getId_pertanyaan());
             statement.setString(3, b.getTeks_jawaban());
@@ -81,6 +83,6 @@ public class DAOJawaban implements IDAOJawaban{
      Connection con;
     // SQL Query
     String strRead = "select * from jawaban_quiz;";
-    String strInsert = "insert into tblJawaban (id, id_pertanyaan, teks_jawaban, is_correct) values (?,?,?,?);";
+    String strInsert = "insert into jawaban_quiz (id, id_pertanyaan, teks_jawaban, is_correct) values (?,?,?,?);";
     
 }

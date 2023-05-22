@@ -21,6 +21,7 @@ public class ControllerJawaban {
     public ControllerJawaban(CRUDJawaban crudJawaban){
         this.crudJawaban = crudJawaban;
         iJawaban = new DAOJawaban();
+        lstJwb = iJawaban.getAll();
     }
     
     public void isiTable()

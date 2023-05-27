@@ -6,6 +6,11 @@ package View;
 
 import Controller.ControllerJawaban;
 import Controller.ControllerPertanyaan;
+import DAO.DAOPertanyaan;
+import Model.Pertanyaan;
+import java.util.List;
+import java.util.Locale;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
@@ -16,11 +21,11 @@ import javax.swing.JTextField;
  * @author rizki
  */
 public class CRUDKuis extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Pertanyaan
      */
-    public CRUDKuis() {
+    public CRUDKuis(){
         initComponents();
         ctPertanyaan = new ControllerPertanyaan(this);
         ctPertanyaan.isiTabel();
@@ -29,6 +34,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         ctJwb = new ControllerJawaban(this);
         ctJwb.isiTable();
         ctJwb.reset();
+        
     }
 
     /**
@@ -60,13 +66,13 @@ public class CRUDKuis extends javax.swing.JFrame {
         btnReset = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
-        id_jawaban_benar = new javax.swing.JTextField();
+        comboJB = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtCariSoal = new javax.swing.JTextField();
         cari = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tabelData = new javax.swing.JTable();
+        tabelSoal = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -79,9 +85,9 @@ public class CRUDKuis extends javax.swing.JFrame {
         setJawabanBenar = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtJawaban = new javax.swing.JTextArea();
-        txtIdPertanyaan = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        ComboBoxPtn = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         cari_jawaban = new javax.swing.JLabel();
         txtCariJawaban = new javax.swing.JTextField();
@@ -162,9 +168,9 @@ public class CRUDKuis extends javax.swing.JFrame {
             }
         });
 
-        id_jawaban_benar.addActionListener(new java.awt.event.ActionListener() {
+        comboJB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_jawaban_benarActionPerformed(evt);
+                comboJBActionPerformed(evt);
             }
         });
 
@@ -190,14 +196,14 @@ public class CRUDKuis extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(id_jawaban_benar, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboJB, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -212,9 +218,9 @@ public class CRUDKuis extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(id_jawaban_benar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboJB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,20 +249,20 @@ public class CRUDKuis extends javax.swing.JFrame {
             }
         });
 
-        tabelData.setModel(new javax.swing.table.DefaultTableModel(
+        tabelSoal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-
+                "ID", "PERTANYAAN", "ID JAWABAN BENAR"
             }
         ));
-        tabelData.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabelSoal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelDataMouseClicked(evt);
+                tabelSoalMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tabelData);
+        jScrollPane2.setViewportView(tabelSoal);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -283,9 +289,9 @@ public class CRUDKuis extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtCariSoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cari))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -302,7 +308,7 @@ public class CRUDKuis extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(393, 393, 393)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,7 +319,7 @@ public class CRUDKuis extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jLabel1.getAccessibleContext().setAccessibleDescription("");
@@ -372,18 +378,18 @@ public class CRUDKuis extends javax.swing.JFrame {
         txtJawaban.setRows(5);
         jScrollPane3.setViewportView(txtJawaban);
 
-        txtIdPertanyaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdPertanyaanActionPerformed(evt);
-            }
-        });
-
         jLabel8.setFont(new java.awt.Font("Segoe UI Semilight", 1, 14)); // NOI18N
         jLabel8.setText("ID :");
 
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
+            }
+        });
+
+        ComboBoxPtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxPtnActionPerformed(evt);
             }
         });
 
@@ -397,7 +403,7 @@ public class CRUDKuis extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lbl_teksjawaban)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -409,17 +415,18 @@ public class CRUDKuis extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnReset1))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(setJawabanBenar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtIdPertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(27, 27, 27)
+                                    .addComponent(ComboBoxPtn, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(setJawabanBenar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -437,18 +444,18 @@ public class CRUDKuis extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtIdPertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboBoxPtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(setJawabanBenar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(102, 102, 102)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHapus1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUbah1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReset1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64))
+                .addGap(116, 116, 116))
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -493,7 +500,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane4)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -513,8 +520,8 @@ public class CRUDKuis extends javax.swing.JFrame {
                     .addComponent(txtCariJawaban, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCari))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -573,7 +580,7 @@ public class CRUDKuis extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,11 +590,11 @@ public class CRUDKuis extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tabelDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataMouseClicked
+    private void tabelSoalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelSoalMouseClicked
         // TODO add your handling code here:
-        int row = tabelData.getSelectedRow();
+        int row = tabelSoal.getSelectedRow();
         ctPertanyaan.isiField(row);
-    }//GEN-LAST:event_tabelDataMouseClicked
+    }//GEN-LAST:event_tabelSoalMouseClicked
 
     private void cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariActionPerformed
         // TODO add your handling code here:
@@ -598,10 +605,6 @@ public class CRUDKuis extends javax.swing.JFrame {
     private void txtCariSoalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariSoalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCariSoalActionPerformed
-
-    private void id_jawaban_benarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_jawaban_benarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_id_jawaban_benarActionPerformed
 
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
@@ -642,6 +645,8 @@ public class CRUDKuis extends javax.swing.JFrame {
     private void btnHapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapus1ActionPerformed
         // TODO add your handling code here:
         ctJwb.delete();
+        ctJwb.isiTable();
+        ctJwb.reset();
     }//GEN-LAST:event_btnHapus1ActionPerformed
 
     private void btnUbah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbah1ActionPerformed
@@ -660,10 +665,6 @@ public class CRUDKuis extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_setJawabanBenarActionPerformed
 
-    private void txtIdPertanyaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdPertanyaanActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdPertanyaanActionPerformed
-
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
@@ -681,6 +682,14 @@ public class CRUDKuis extends javax.swing.JFrame {
         int row = tabelJawaban.getSelectedRow();
         ctJwb.isiField(row);
     }//GEN-LAST:event_tabelJawabanMouseClicked
+
+    private void comboJBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboJBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboJBActionPerformed
+
+    private void ComboBoxPtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxPtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxPtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -721,6 +730,7 @@ public class CRUDKuis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxPtn;
     private javax.swing.JButton btnCari;
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnHapus1;
@@ -734,8 +744,8 @@ public class CRUDKuis extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton cari;
     private javax.swing.JLabel cari_jawaban;
+    private javax.swing.JComboBox<String> comboJB;
     private javax.swing.JTextField id;
-    private javax.swing.JTextField id_jawaban_benar;
     private javax.swing.JButton jButton5;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JFrame jFrame1;
@@ -762,17 +772,17 @@ public class CRUDKuis extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lbl_teksjawaban;
     private javax.swing.JComboBox<String> setJawabanBenar;
-    private javax.swing.JTable tabelData;
     private javax.swing.JTable tabelJawaban;
+    private javax.swing.JTable tabelSoal;
     private javax.swing.JTextArea teks_pertanyaan;
     private javax.swing.JTextField txtCariJawaban;
     private javax.swing.JTextField txtCariSoal;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtIdPertanyaan;
     private javax.swing.JTextArea txtJawaban;
     // End of variables declaration//GEN-END:variables
     ControllerPertanyaan ctPertanyaan;
     ControllerJawaban ctJwb;
+    DAOPertanyaan daoP;
 
     //Soal
     public JTextArea getTxtPertanyaan()
@@ -781,7 +791,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         }
     public JTable getTabelDataSoal() 
         {
-        return tabelData;
+        return tabelSoal;
         }
     
     public JTextField getID()
@@ -789,17 +799,17 @@ public class CRUDKuis extends javax.swing.JFrame {
         return id;
     }
     
-    public JTextField getIDJawabanBenar()
-    {
-        return id_jawaban_benar;
-    }
-    
         public JTextField getTxtCariSoal()
     {
         return txtCariSoal;
     }
+    
+    public JComboBox getComboJB()
+    {
+        return comboJB;
+    }
         
-    //Jawaban
+    //JAWABAN
     public JTable getTabelDataJawaban() { 
         return tabelJawaban;
     }
@@ -812,8 +822,8 @@ public class CRUDKuis extends javax.swing.JFrame {
         return txtJawaban;
     }
     
-    public JTextField gettxtIdPertanyaan(){
-        return txtIdPertanyaan;
+    public JComboBox getComboBoxPtn(){
+        return ComboBoxPtn;
     }
     
     public JComboBox getJawabanBenar(){

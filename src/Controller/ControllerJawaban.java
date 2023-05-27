@@ -24,6 +24,7 @@ public class ControllerJawaban {
         this.crudKuis = crudKuis;
         iJawaban = new DAOJawaban();
         lstJwb = iJawaban.getAll();
+        iJawaban.fillComboBoxPtn(crudKuis.getComboBoxPtn());
     }
     
     public void isiTable()
@@ -37,7 +38,7 @@ public class ControllerJawaban {
     {
         Jawaban b = new Jawaban();
         b.setId(Integer.parseInt(crudKuis.gettxtId().getText()));
-        b.setId_pertanyaan(Integer.parseInt(crudKuis.gettxtIdPertanyaan().getText()));
+        b.setId_pertanyaan(Integer.parseInt(crudKuis.getComboBoxPtn().getSelectedItem().toString()));
         b.setTeks_jawaban(crudKuis.gettxtJawaban().getText());
         b.setIs_correct(crudKuis.getJawabanBenar().getSelectedItem().toString());
         iJawaban.insert(b);
@@ -47,18 +48,18 @@ public class ControllerJawaban {
     public void reset()
     {
         if(crudKuis.gettxtId().isEnabled())
-        crudKuis.gettxtId().setEnabled(true);
-        crudKuis.gettxtId().setText("");
-        crudKuis.gettxtIdPertanyaan().setText("");
-        crudKuis.gettxtJawaban().setText("");
-        crudKuis.getJawabanBenar().setSelectedItem("");
+            crudKuis.gettxtId().setEnabled(true);
+            crudKuis.gettxtId().setText("");
+            crudKuis.getComboBoxPtn().setSelectedItem("");
+            crudKuis.gettxtJawaban().setText("");
+            crudKuis.getJawabanBenar().setSelectedItem("");
     }
     
     public void isiField(int row)
     {
         crudKuis.gettxtId().setEnabled(false);
         crudKuis.gettxtId().setText(lstJwb.get(row).getId().toString());
-        crudKuis.gettxtIdPertanyaan().setText(Integer.toString(lstJwb.get(row).getId_pertanyaan()));
+        crudKuis.getComboBoxPtn().setSelectedItem(Integer.toString(lstJwb.get(row).getId_pertanyaan()));
         crudKuis.gettxtJawaban().setText(lstJwb.get(row).getTeks_jawaban());
         crudKuis.getJawabanBenar().setSelectedItem(lstJwb);
     }
@@ -68,8 +69,8 @@ public class ControllerJawaban {
         Jawaban b = new Jawaban();
         b.setId(Integer.parseInt(crudKuis.gettxtId().getText()));
         b.setTeks_jawaban(crudKuis.gettxtJawaban().getText());
+        b.setId_pertanyaan(Integer.parseInt(crudKuis.getComboBoxPtn().getSelectedItem().toString()));
         b.setIs_correct(crudKuis.getJawabanBenar().getSelectedItem().toString());
-        b.setId_pertanyaan(Integer.parseInt(crudKuis.gettxtIdPertanyaan().getText()));
         iJawaban.update(b);
         JOptionPane.showMessageDialog(null, "update berhasil");
     }

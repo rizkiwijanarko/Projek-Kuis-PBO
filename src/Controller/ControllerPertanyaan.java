@@ -6,7 +6,7 @@ package Controller;
 
 import DAO.DAOPertanyaan;
 import DAOInterface.IDAOPertanyaan;
-import View.CRUDPertanyaan;
+import View.CRUDKuis;
 import java.util.List;
 import Model.Pertanyaan;
 import Model.TabelModelPertanyaan;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class ControllerPertanyaan {
     
-    public ControllerPertanyaan(CRUDPertanyaan frame)
+    public ControllerPertanyaan(CRUDKuis frame)
     {
         this.frmPertanyaan = frame;
         implPertanyaan = new DAOPertanyaan();
@@ -28,7 +28,7 @@ public class ControllerPertanyaan {
     {
         lstPertanyaan = implPertanyaan.getAll();
         TabelModelPertanyaan tmp = new TabelModelPertanyaan(lstPertanyaan);
-        frmPertanyaan.getTabelData().setModel(tmp);
+        frmPertanyaan.getTabelDataSoal().setModel(tmp);
     }
     
     public void Reset()
@@ -92,11 +92,11 @@ public class ControllerPertanyaan {
     {
         lstPertanyaan = implPertanyaan.getCariSoal(frmPertanyaan.getTxtCariSoal().getText());
         TabelModelPertanyaan tblPertanyaan = new TabelModelPertanyaan(lstPertanyaan);
-        frmPertanyaan.getTabelData().setModel(tblPertanyaan);
+        frmPertanyaan.getTabelDataSoal().setModel(tblPertanyaan);
     }
         
         
-    CRUDPertanyaan frmPertanyaan;
+    CRUDKuis frmPertanyaan;
     IDAOPertanyaan implPertanyaan;
     List<Pertanyaan> lstPertanyaan;
 }

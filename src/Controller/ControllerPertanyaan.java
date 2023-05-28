@@ -5,6 +5,7 @@
 package Controller;
 
 import DAO.DAOPertanyaan;
+import DAOInterface.IDAOJawaban;
 import DAOInterface.IDAOPertanyaan;
 import View.CRUDKuis;
 import java.util.List;
@@ -104,7 +105,10 @@ public class ControllerPertanyaan {
         implPertanyaan.fillComboBoxJB(frmPertanyaan.getComboJB());
     }
 
-
+    public void removeComboBoxJB()
+    {
+        implPertanyaan.removeAllModelComboBox(frmPertanyaan.getComboBoxPtn());
+    }
         
     CRUDKuis frmPertanyaan;
     IDAOPertanyaan implPertanyaan;

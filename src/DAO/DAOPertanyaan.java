@@ -164,6 +164,11 @@ public class DAOPertanyaan implements IDAOPertanyaan{
             System.out.println("Failed to retrieve quiz entries: " + e.getMessage());
             }
     }
+    
+    @Override
+    public void removeAllModelComboBox(JComboBox<Integer> comboBox) {
+        comboBox.removeAllItems();
+    }
 
     
     

@@ -26,4 +26,6 @@ public interface IDAOJawaban {
     
     //cari data
     public void fillComboBoxPtn(JComboBox<Integer> comboBox);
+    
+    public void removeAllModelComboBox(JComboBox<Integer> comboBox);
 }

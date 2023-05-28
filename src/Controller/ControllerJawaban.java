@@ -94,6 +94,13 @@ public class ControllerJawaban {
         iJawaban.fillComboBoxPtn(crudKuis.getComboBoxPtn());
     }
     
+    public void removeComboBoxJWB()
+    {
+       iJawaban.removeAllModelComboBox(crudKuis.getComboJB());
+    }
+    
+    
+    
     CRUDKuis crudKuis;
     IDAOJawaban iJawaban;
     List<Jawaban> lstJwb;

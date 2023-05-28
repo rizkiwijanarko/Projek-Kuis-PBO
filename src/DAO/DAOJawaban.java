@@ -172,6 +172,12 @@ public class DAOJawaban implements IDAOJawaban{
         return lstJawaban;
     }
     
+    @Override
+    public void removeAllModelComboBox(JComboBox<Integer> comboBox)
+    {
+        comboBox.removeAllItems();
+    }
+    
     Connection con;
     // SQL Query
     String strRead = "select * from jawaban_quiz ORDER BY id ASC ;";

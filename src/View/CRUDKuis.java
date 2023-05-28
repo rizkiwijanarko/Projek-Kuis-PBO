@@ -618,6 +618,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctPertanyaan.update();
         ctPertanyaan.isiTabel();
+        ctPertanyaan.removeComboBoxJB();
         ctPertanyaan.Reset();
     }//GEN-LAST:event_btnUbahActionPerformed
 
@@ -626,6 +627,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         ctPertanyaan.delete();
         ctPertanyaan.isiTabel();
         ctPertanyaan.Reset();
+        ctPertanyaan.removeComboBoxJB();
         ctJwb.fillComboBoxJWB();
     }//GEN-LAST:event_btnHapusActionPerformed
 
@@ -633,6 +635,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctPertanyaan.insert();
         ctPertanyaan.isiTabel();
+        ctPertanyaan.removeComboBoxJB();
         ctJwb.fillComboBoxJWB();
         ctPertanyaan.Reset();
     }//GEN-LAST:event_btnSimpanActionPerformed
@@ -641,6 +644,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctJwb.insert();
         ctJwb.isiTable();
+        ctJwb.removeComboBoxJWB();
         ctPertanyaan.fillComboBoxJB();
         ctJwb.reset();
     }//GEN-LAST:event_btnSimpan1ActionPerformed
@@ -649,6 +653,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctJwb.delete();
         ctJwb.isiTable();
+        ctJwb.removeComboBoxJWB();
         ctPertanyaan.fillComboBoxJB();
         ctJwb.reset();
     }//GEN-LAST:event_btnHapus1ActionPerformed

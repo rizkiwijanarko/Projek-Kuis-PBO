@@ -5,6 +5,7 @@
 package DAOInterface;
 import Model.Pertanyaan;
 import java.util.List;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -16,5 +17,5 @@ public interface IDAOPertanyaan {
     public void delete(int id);
     public List<Pertanyaan> getCariSoal(String soal);
     public List<Pertanyaan> getAll();
-    
+    public void fillComboBoxJB(JComboBox<Integer> comboBox);
 }

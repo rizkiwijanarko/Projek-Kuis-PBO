@@ -6,10 +6,11 @@ package Controller;
 
 import DAO.DAOPertanyaan;
 import DAOInterface.IDAOPertanyaan;
-import View.CRUDPertanyaan;
+import View.CRUDKuis;
 import java.util.List;
 import Model.Pertanyaan;
 import Model.TabelModelPertanyaan;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 /**
  *
@@ -17,18 +18,18 @@ import javax.swing.JOptionPane;
  */
 public class ControllerPertanyaan {
     
-    public ControllerPertanyaan(CRUDPertanyaan frame)
+    public ControllerPertanyaan(CRUDKuis frame)
     {
         this.frmPertanyaan = frame;
         implPertanyaan = new DAOPertanyaan();
-        
+        implPertanyaan.fillComboBoxJB(frmPertanyaan.getComboJB());
     }
     
     public void isiTabel()
     {
         lstPertanyaan = implPertanyaan.getAll();
         TabelModelPertanyaan tmp = new TabelModelPertanyaan(lstPertanyaan);
-        frmPertanyaan.getTabelData().setModel(tmp);
+        frmPertanyaan.getTabelDataSoal().setModel(tmp);
     }
     
     public void Reset()
@@ -38,16 +39,19 @@ public class ControllerPertanyaan {
         
         frmPertanyaan.getID().setText("");
         frmPertanyaan.getTxtPertanyaan().setText("");
-        frmPertanyaan.getIDJawabanBenar().setText("");
+        frmPertanyaan.getJawabanBenar().setSelectedItem("");
     }
     
     public void insert()
     {
-        if (!frmPertanyaan.getTxtPertanyaan().getText().trim().isEmpty() && !frmPertanyaan.getID().getText().trim().isEmpty() && !frmPertanyaan.getIDJawabanBenar().getText().trim().isEmpty()){
+        if (!frmPertanyaan.getTxtPertanyaan().getText().trim().isEmpty() &&
+            !frmPertanyaan.getID().getText().trim().isEmpty() &&
+            frmPertanyaan.getComboJB().getSelectedItem() != null){
              Pertanyaan b = new Pertanyaan();
              b.setId(Integer.parseInt(frmPertanyaan.getID().getText()));
              b.setTeksPertanyaan(frmPertanyaan.getTxtPertanyaan().getText());
-             b.setIdJawabanBenar(Integer.parseInt(frmPertanyaan.getIDJawabanBenar().getText()));
+             b.setIdJawabanBenar(Integer.parseInt(frmPertanyaan.getComboJB().getSelectedItem().toString()));
+             
              boolean res = implPertanyaan.insert(b);
              
              if(res)
@@ -64,7 +68,7 @@ public class ControllerPertanyaan {
         frmPertanyaan.getID().setEnabled(false);
         frmPertanyaan.getID().setText(Integer.toString(lstPertanyaan.get(row).getId()));
         frmPertanyaan.getTxtPertanyaan().setText(lstPertanyaan.get(row).getTeksPertanyaan());   
-        frmPertanyaan.getIDJawabanBenar().setText(Integer.toString(lstPertanyaan.get(row).getIdJawabanBenar()));
+        frmPertanyaan.getComboJB().setSelectedItem(Integer.toString(lstPertanyaan.get(row).getIdJawabanBenar()));
     }
     
     public void update()
@@ -72,7 +76,7 @@ public class ControllerPertanyaan {
         Pertanyaan b = new Pertanyaan();
         b.setId(Integer.parseInt(frmPertanyaan.getID().getText()));
         b.setTeksPertanyaan(frmPertanyaan.getTxtPertanyaan().getText());
-        b.setIdJawabanBenar(Integer.parseInt(frmPertanyaan.getIDJawabanBenar().getText()));
+        b.setIdJawabanBenar(Integer.parseInt(frmPertanyaan.getComboJB().getSelectedItem().toString()));
         implPertanyaan.update(b);
 
         JOptionPane.showMessageDialog(null,"Berhasil Mengubah Data!");
@@ -80,7 +84,7 @@ public class ControllerPertanyaan {
     
     public void delete()
     {
-        if (!frmPertanyaan.getTxtPertanyaan().getText().trim().isEmpty() && !frmPertanyaan.getID().getText().trim().isEmpty() && !frmPertanyaan.getIDJawabanBenar().getText().trim().isEmpty()){
+        if (!frmPertanyaan.getTxtPertanyaan().getText().trim().isEmpty() && !frmPertanyaan.getID().getText().trim().isEmpty() && frmPertanyaan.getComboJB().getSelectedItem() != null){
              implPertanyaan.delete(Integer.parseInt(frmPertanyaan.getID().getText()));
             JOptionPane.showMessageDialog(null,"Berhasil Menghapus Data!");
         }else{
@@ -92,11 +96,12 @@ public class ControllerPertanyaan {
     {
         lstPertanyaan = implPertanyaan.getCariSoal(frmPertanyaan.getTxtCariSoal().getText());
         TabelModelPertanyaan tblPertanyaan = new TabelModelPertanyaan(lstPertanyaan);
-        frmPertanyaan.getTabelData().setModel(tblPertanyaan);
+        frmPertanyaan.getTabelDataSoal().setModel(tblPertanyaan);
     }
+
+
         
-        
-    CRUDPertanyaan frmPertanyaan;
+    CRUDKuis frmPertanyaan;
     IDAOPertanyaan implPertanyaan;
     List<Pertanyaan> lstPertanyaan;
 }

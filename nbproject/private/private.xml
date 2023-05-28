@@ -4,5 +4,56 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
         <group/>
+        <group>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Helper/Koneksi.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/TabelModelJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/Pertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/crudmvcdao/CRUDMVCDAO.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/TabelModelPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDKuis.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/Jawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Helper/Koneksi.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/TabelModelJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/Pertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/crudmvcdao/CRUDMVCDAO.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerJawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/TabelModelPertanyaan.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDKuis.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/Jawaban.java</file>
+            <file>file:/C:/Users/rizki/OneDrive/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/Jawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/View/CRUDJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerPertanyaan.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Helper/Koneksi.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/TabelModelJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOPertanyaan.java</file>
+        </group>
+        <group>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/Jawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOPertanyaan.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerPertanyaan.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Helper/Koneksi.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAO/DAOJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Controller/ControllerJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/Model/TabelModelJawaban.java</file>
+            <file>file:/C:/Users/hp/Documents/NetBeansProjects/Projek-Kuis-PBO/src/DAOInterface/IDAOPertanyaan.java</file>
+        </group>
     </open-files>
 </project-private>

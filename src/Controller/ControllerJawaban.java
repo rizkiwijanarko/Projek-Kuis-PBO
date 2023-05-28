@@ -25,6 +25,7 @@ public class ControllerJawaban {
         this.crudKuis = crudKuis;
         iJawaban = new DAOJawaban();
         lstJwb = iJawaban.getAll();
+        iJawaban.fillComboBoxPtn(crudKuis.getComboBoxPtn());
     }
     
     public void isiTable()

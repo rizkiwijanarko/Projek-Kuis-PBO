@@ -4,6 +4,13 @@
  */
 package Model;
 
+import DAO.DAOPertanyaan;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author rizki
@@ -52,7 +59,8 @@ public class Pertanyaan {
     public void setIdJawabanBenar(int IdJawabanBenar) {
         this.IdJawabanBenar = IdJawabanBenar;
     }
-    
+
+
     private int ID;
     private String teksPertanyaan;
     private int IdJawabanBenar;

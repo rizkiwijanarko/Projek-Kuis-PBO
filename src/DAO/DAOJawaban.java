@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -112,7 +113,7 @@ public class DAOJawaban implements IDAOJawaban{
         PreparedStatement statement = null;
         try
         {
-            statement = con.prepareStatement(strUpdate);
+            statement = con.prepareStatement(strDelete);
             statement.setInt(1, id);
             statement.executeUpdate();
 
@@ -130,11 +131,27 @@ public class DAOJawaban implements IDAOJawaban{
         }
     }
     
+    @Override
+    public void fillComboBoxPtn(JComboBox<Integer> comboBox) {
+        try {
+            PreparedStatement st = con.prepareStatement(strComboPtn);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                int idPtn = rs.getInt("id");
+                comboBox.addItem(idPtn);
+            }
+        } catch (SQLException e) {
+            System.out.println("Gagal Mengambil entri quiz: " + e.getMessage());
+            }    
+    }
+    
     Connection con;
     // SQL Query
-    String strRead = "select * from jawaban_quiz;";
+    String strRead = "select * from jawaban_quiz ORDER BY id ASC ;";
     String strInsert = "insert into jawaban_quiz (id, id_pertanyaan, teks_jawaban, is_correct) values (?,?,?,?);";
     String strUpdate = "update jawaban_quiz set id_pertanyaan=?, teks_jawaban=?, is_correct=? where id=?";
     String strDelete = "delete from jawaban_quiz where id=?";
+    String strComboPtn = "SELECT id FROM pertanyaan_quiz;";
 
 }

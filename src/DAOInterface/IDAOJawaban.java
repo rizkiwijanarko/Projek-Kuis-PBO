@@ -6,6 +6,7 @@ package DAOInterface;
 
 import Model.Jawaban;
 import java.util.List;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -20,5 +21,5 @@ public interface IDAOJawaban {
     public void update(Jawaban b);
     //delete data
     public void delete(int id);
-    
+    public void fillComboBoxPtn(JComboBox<Integer> comboBox);
 }

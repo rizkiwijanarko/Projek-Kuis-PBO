@@ -14,6 +14,7 @@ import java.util.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 /**
  *
  * @author rizki
@@ -149,6 +150,22 @@ public class DAOPertanyaan implements IDAOPertanyaan{
         return lstPertanyaan;
     }
     
+    @Override
+    public void fillComboBoxJB(JComboBox<Integer> comboBox) {
+        try {
+            PreparedStatement st = con.prepareStatement(addJB);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                int idJB = rs.getInt("id");
+                comboBox.addItem(idJB);
+            }
+        } catch (SQLException e) {
+            System.out.println("Failed to retrieve quiz entries: " + e.getMessage());
+            }
+    }
+
+    
     
     Connection con;
     
@@ -158,4 +175,5 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     String delete = "DELETE FROM pertanyaan_quiz WHERE id=?;";
     String strRead = "SELECT * FROM `pertanyaan_quiz` ORDER BY `id` asc;";
     String cariSoal = "SELECT * FROM pertanyaan_quiz WHERE teks_pertanyaan like ?;";
+    String addJB = "SELECT id FROM jawaban_quiz;";
 }

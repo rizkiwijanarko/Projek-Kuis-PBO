@@ -98,6 +98,11 @@ public class ControllerPertanyaan {
         TabelModelPertanyaan tblPertanyaan = new TabelModelPertanyaan(lstPertanyaan);
         frmPertanyaan.getTabelDataSoal().setModel(tblPertanyaan);
     }
+    
+    public void fillComboBoxJB()
+    {
+        implPertanyaan.fillComboBoxJB(frmPertanyaan.getComboJB());
+    }
 
 
         

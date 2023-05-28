@@ -21,5 +21,8 @@ public interface IDAOJawaban {
     public void update(Jawaban b);
     //delete data
     public void delete(int id);
+    //Cari Jawaban
+    public List<Jawaban> getCariJawaban(String jawaban);
+    
     public void fillComboBoxPtn(JComboBox<Integer> comboBox);
 }

@@ -34,7 +34,6 @@ public class CRUDKuis extends javax.swing.JFrame {
         ctJwb = new ControllerJawaban(this);
         ctJwb.isiTable();
         ctJwb.reset();
-        
     }
 
     /**
@@ -627,18 +626,22 @@ public class CRUDKuis extends javax.swing.JFrame {
         ctPertanyaan.delete();
         ctPertanyaan.isiTabel();
         ctPertanyaan.Reset();
+        ctJwb.fillComboBoxJWB();
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         // TODO add your handling code here:
         ctPertanyaan.insert();
         ctPertanyaan.isiTabel();
+        ctJwb.fillComboBoxJWB();
+        ctPertanyaan.Reset();
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnSimpan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpan1ActionPerformed
         // TODO add your handling code here:
         ctJwb.insert();
         ctJwb.isiTable();
+        ctPertanyaan.fillComboBoxJB();
         ctJwb.reset();
     }//GEN-LAST:event_btnSimpan1ActionPerformed
 
@@ -646,6 +649,7 @@ public class CRUDKuis extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctJwb.delete();
         ctJwb.isiTable();
+        ctPertanyaan.fillComboBoxJB();
         ctJwb.reset();
     }//GEN-LAST:event_btnHapus1ActionPerformed
 
@@ -675,6 +679,8 @@ public class CRUDKuis extends javax.swing.JFrame {
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         // TODO add your handling code here:
+        ctJwb.cariJawaban();
+        ctJwb.reset();
     }//GEN-LAST:event_btnCariActionPerformed
 
     private void tabelJawabanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelJawabanMouseClicked
@@ -782,7 +788,6 @@ public class CRUDKuis extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     ControllerPertanyaan ctPertanyaan;
     ControllerJawaban ctJwb;
-    DAOPertanyaan daoP;
 
     //Soal
     public JTextArea getTxtPertanyaan()
@@ -808,6 +813,10 @@ public class CRUDKuis extends javax.swing.JFrame {
     {
         return comboJB;
     }
+    
+    public JComboBox getJawabanBenar(){
+        return setJawabanBenar;
+    }
         
     //JAWABAN
     public JTable getTabelDataJawaban() { 
@@ -826,7 +835,8 @@ public class CRUDKuis extends javax.swing.JFrame {
         return ComboBoxPtn;
     }
     
-    public JComboBox getJawabanBenar(){
-        return setJawabanBenar;
+    public JTextField getCariJawaban()
+    {
+        return txtCariJawaban;
     }
 }

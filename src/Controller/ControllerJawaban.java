@@ -8,6 +8,7 @@ import DAO.DAOJawaban;
 import DAOInterface.IDAOJawaban;
 import Model.Jawaban;
 import Model.TabelModelJawaban;
+import Model.TabelModelPertanyaan;
 import View.CRUDKuis;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -24,7 +25,6 @@ public class ControllerJawaban {
         this.crudKuis = crudKuis;
         iJawaban = new DAOJawaban();
         lstJwb = iJawaban.getAll();
-        iJawaban.fillComboBoxPtn(crudKuis.getComboBoxPtn());
     }
     
     public void isiTable()
@@ -79,6 +79,18 @@ public class ControllerJawaban {
     {
         iJawaban.delete(Integer.parseInt(crudKuis.gettxtId().getText()));
         JOptionPane.showMessageDialog(null,"Berhasil Menghapus Data!");
+    }
+    
+    public void cariJawaban()
+    {
+        lstJwb = iJawaban.getCariJawaban(crudKuis.getCariJawaban().getText());
+        TabelModelJawaban tblJawaban = new TabelModelJawaban(lstJwb);
+        crudKuis.getTabelDataJawaban().setModel(tblJawaban);
+    }
+    
+    public void fillComboBoxJWB()
+    {
+        iJawaban.fillComboBoxPtn(crudKuis.getComboBoxPtn());
     }
     
     CRUDKuis crudKuis;

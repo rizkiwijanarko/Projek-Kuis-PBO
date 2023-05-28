@@ -7,6 +7,7 @@ package DAO;
 import DAOInterface.IDAOJawaban;
 import Helper.Koneksi;
 import Model.Jawaban;
+import Model.Pertanyaan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -146,12 +147,38 @@ public class DAOJawaban implements IDAOJawaban{
             }    
     }
     
+    @Override
+    public List<Jawaban> getCariJawaban(String jawaban) {
+        List<Jawaban> lstJawaban = null;
+        
+        try {
+            lstJawaban = new ArrayList<>();
+            PreparedStatement st = (PreparedStatement) con.prepareStatement(strCariJawaban);
+            st.setString(1, "%" + jawaban + "%");
+            ResultSet rs = st.executeQuery();
+            while(rs.next())
+            {
+                Jawaban b = new Jawaban();
+                b.setId(rs.getInt("id"));
+                b.setTeks_jawaban(rs.getString("teks_jawaban"));
+                b.setIs_correct(rs.getString("is_correct"));
+                b.setId_pertanyaan(rs.getInt("id_pertanyaan"));
+                lstJawaban.add(b);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Tidak ada entri data");
+        }
+        return lstJawaban;
+    }
+    
     Connection con;
     // SQL Query
     String strRead = "select * from jawaban_quiz ORDER BY id ASC ;";
     String strInsert = "insert into jawaban_quiz (id, id_pertanyaan, teks_jawaban, is_correct) values (?,?,?,?);";
-    String strUpdate = "update jawaban_quiz set id_pertanyaan=?, teks_jawaban=?, is_correct=? where id=?";
-    String strDelete = "delete from jawaban_quiz where id=?";
-    String strComboPtn = "SELECT id FROM pertanyaan_quiz;";
+    String strUpdate = "update jawaban_quiz set id_pertanyaan=?, teks_jawaban=?, is_correct=? where id=?;";
+    String strDelete = "delete from jawaban_quiz where id=?;";
+    String strCariJawaban = "SELECT * FROM jawaban_quiz WHERE teks_jawaban like ?;";
+    String strComboPtn = "SELECT id FROM pertanyaan_quiz ORDER BY id ASC;";
 
 }

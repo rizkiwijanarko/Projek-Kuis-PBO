@@ -175,5 +175,6 @@ public class DAOPertanyaan implements IDAOPertanyaan{
     String delete = "DELETE FROM pertanyaan_quiz WHERE id=?;";
     String strRead = "SELECT * FROM `pertanyaan_quiz` ORDER BY `id` asc;";
     String cariSoal = "SELECT * FROM pertanyaan_quiz WHERE teks_pertanyaan like ?;";
-    String addJB = "SELECT id FROM jawaban_quiz;";
+    String addJB = "SELECT id FROM jawaban_quiz ORDER BY id ASC;";
+
 }

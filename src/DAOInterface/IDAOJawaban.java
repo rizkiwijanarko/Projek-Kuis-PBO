@@ -24,5 +24,6 @@ public interface IDAOJawaban {
     //Cari Jawaban
     public List<Jawaban> getCariJawaban(String jawaban);
     
+    //cari data
     public void fillComboBoxPtn(JComboBox<Integer> comboBox);
 }

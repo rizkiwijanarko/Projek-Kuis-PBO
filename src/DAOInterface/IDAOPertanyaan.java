@@ -19,4 +19,5 @@ public interface IDAOPertanyaan {
     public List<Pertanyaan> getAll();
     public void fillComboBoxJB(JComboBox<Integer> comboBox);
     public void removeAllModelComboBox(JComboBox<Integer> comboBox);
+
 }

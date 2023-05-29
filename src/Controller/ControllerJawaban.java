@@ -48,8 +48,9 @@ public class ControllerJawaban {
     
     public void reset()
     {
-        if(crudKuis.gettxtId().isEnabled())
+        if(!crudKuis.gettxtId().isEnabled())
             crudKuis.gettxtId().setEnabled(true);
+        
             crudKuis.gettxtId().setText("");
             crudKuis.getComboBoxPtn().setSelectedItem("");
             crudKuis.gettxtJawaban().setText("");

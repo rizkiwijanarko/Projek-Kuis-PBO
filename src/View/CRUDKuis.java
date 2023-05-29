@@ -617,7 +617,6 @@ public class CRUDKuis extends javax.swing.JFrame {
         // TODO add your handling code here:
         ctPertanyaan.update();
         ctPertanyaan.isiTabel();
-        ctPertanyaan.removeComboBoxJB();
         ctPertanyaan.Reset();
     }//GEN-LAST:event_btnUbahActionPerformed
 

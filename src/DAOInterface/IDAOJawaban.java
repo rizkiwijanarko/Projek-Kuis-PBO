@@ -23,9 +23,8 @@ public interface IDAOJawaban {
     public void delete(int id);
     //Cari Jawaban
     public List<Jawaban> getCariJawaban(String jawaban);
-    
     //cari data
     public void fillComboBoxPtn(JComboBox<Integer> comboBox);
-    
+    //remove model combo box
     public void removeAllModelComboBox(JComboBox<Integer> comboBox);
 }
